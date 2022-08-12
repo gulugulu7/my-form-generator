@@ -29,10 +29,6 @@ function mountSlotFiles(h, confClone, children) {
 function buildDataObject(confClone, dataObject) {
   Object.keys(confClone).forEach((key) => {
     if (key !== "__config__" && key !== "__vModel__" && key != "__slot__") {
-      if (key === "placeholder") {
-        confClone.placeholder =
-          confClone.placeholder + confClone.__config__.label;
-      }
       dataObject.attrs[key] = confClone[key];
     }
 

@@ -42,6 +42,7 @@
 import DraggableItem from "./DraggableItem.vue";
 import draggable from "vuedraggable";
 import { mapState, mapMutations } from "vuex";
+import { deepClone } from "../utils";
 
 export default {
   components: {
@@ -52,7 +53,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["formConf"]),
+    ...mapState(["formConf", "activeData"]),
     drawingList: {
       get() {
         return this.$store.state.drawingList;
@@ -63,7 +64,17 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["SET_DRAWING"]),
+    ...mapMutations(["SET_DRAWING", "SET_ACTIVEDATA"]),
+  },
+  watch: {
+    drawingList(val) {
+      if (Object.keys(this.activeData).length > 0 && val.length === 0) {
+        this.SET_ACTIVEDATA({});
+      }
+      if (Object.keys(this.activeData).length === 0 && val.length > 0) {
+        this.SET_ACTIVEDATA(deepClone(val[0]));
+      }
+    },
   },
 };
 </script>

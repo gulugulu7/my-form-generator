@@ -41,12 +41,23 @@ const layouts = {
         span={currentItem.__config__.span}
       >
         <el-form-item
-          label={currentItem.__config__.label}
-          label-width={currentItem.__config__.labelWidth}
+          label={
+            currentItem.__config__.showLabel
+              ? currentItem.__config__.label
+              : null
+          }
+          label-width={
+            currentItem.__config__.showLabel
+              ? currentItem.__config__.labelWidth
+                ? currentItem.__config__.labelWidth + "px"
+                : null
+              : "0px"
+          }
           nativeOnClick={(event) => {
             activeItem(currentItem);
             event.stopPropagation();
           }}
+          required={currentItem.__config__.required}
         >
           <render
             key={currentItem.renderKey}

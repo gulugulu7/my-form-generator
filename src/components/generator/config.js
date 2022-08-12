@@ -14,13 +14,17 @@ export const formConf = {
 // 输入型组件【左面板】
 export const inputComponents = [
   {
+    // 组件的自定义配置
     __config__: {
       label: "单行文本",
       labelWidth: null,
+      showLabel: true,
       changeTag: true,
       tag: "el-input",
       tagIcon: "input",
       defaultValue: undefined,
+      required: true,
+      layout: "colFormItem",
       span: 24,
       document: "https://element.eleme.cn/#/zh-CN/component/input",
     },
@@ -29,7 +33,16 @@ export const inputComponents = [
       prepend: "",
       append: "",
     },
-    placeholder: "请输入",
+    // 其余的为可直接写在组件标签上的属性
+    placeholder: "请输入单行文本",
+    style: { width: "100%" },
+    clearable: true,
+    "prefix-icon": "",
+    "suffix-icon": "",
+    "show-word-limit": false,
+    maxlength: null,
+    readonly: false,
+    disabled: false,
   },
   {
     __config__: {
@@ -43,7 +56,7 @@ export const inputComponents = [
       document: "https://element.eleme.cn/#/zh-CN/component/input",
     },
     type: "textarea",
-    placeholder: "请输入",
+    placeholder: "请输入多行文本",
   },
   {
     __config__: {
@@ -57,7 +70,7 @@ export const inputComponents = [
       document: "https://element.eleme.cn/#/zh-CN/component/input",
     },
     type: "password",
-    placeholder: "请输入",
+    placeholder: "请输入密码",
   },
   {
     __config__: {
@@ -98,7 +111,7 @@ export const selectComponents = [
         },
       ],
     },
-    placeholder: "请选择",
+    placeholder: "请选择下拉选择",
   },
   {
     __config__: {
@@ -110,7 +123,7 @@ export const selectComponents = [
       span: 24,
       document: "https://element.eleme.cn/#/zh-CN/component/cascader",
     },
-    placeholder: "请选择",
+    placeholder: "请选择级联选择",
   },
   {
     __config__: {
@@ -193,7 +206,7 @@ export const selectComponents = [
       span: 24,
       document: "https://element.eleme.cn/#/zh-CN/component/time-picker",
     },
-    placeholder: "请选择",
+    placeholder: "请选择时间选择",
   },
   {
     __config__: {
@@ -205,7 +218,7 @@ export const selectComponents = [
       span: 24,
       document: "https://element.eleme.cn/#/zh-CN/component/time-picker",
     },
-    placeholder: "请选择",
+    placeholder: "请选择时间范围",
   },
   {
     __config__: {
@@ -217,7 +230,7 @@ export const selectComponents = [
       span: 24,
       document: "https://element.eleme.cn/#/zh-CN/component/date-picker",
     },
-    placeholder: "请选择",
+    placeholder: "请选择日期选择",
   },
   {
     __config__: {
@@ -229,7 +242,7 @@ export const selectComponents = [
       span: 24,
       document: "https://element.eleme.cn/#/zh-CN/component/date-picker",
     },
-    placeholder: "请选择",
+    placeholder: "请选择日期范围",
   },
   {
     __config__: {

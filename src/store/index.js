@@ -25,6 +25,9 @@ export default new Vuex.Store({
     SET_DRAWING(state, data) {
       state.drawingList = deepClone(data);
     },
+    REPLACE_DRAWING(state, { data, index }) {
+      state.drawingList.splice(index, 1, data);
+    },
     SET_IDGLOBAL(state) {
       ++state.idGlobal;
     },
