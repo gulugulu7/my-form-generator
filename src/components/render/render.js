@@ -28,12 +28,20 @@ function mountSlotFiles(h, confClone, children) {
 
 function buildDataObject(confClone, dataObject) {
   Object.keys(confClone).forEach((key) => {
-    if (key !== "__config__" && key !== "__vModel__" && key != "__slot__") {
+    if (
+      key !== "__config__" &&
+      key !== "__vModel__" &&
+      key !== "__slot__" &&
+      key !== "style"
+    ) {
       dataObject.attrs[key] = confClone[key];
     }
 
     if (key === "__vModel__") {
       vModel.call(this, dataObject, confClone.__config__.defaultValue);
+    }
+    if (key === "style") {
+      dataObject.style = confClone[key];
     }
   });
 }
@@ -51,6 +59,7 @@ const makeDataObject = () => {
     attrs: {},
     props: {},
     on: {},
+    style: {},
   };
 };
 

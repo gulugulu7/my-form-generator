@@ -20,6 +20,23 @@ export default {
     CenterPanel,
     RightPanel,
   },
+  methods: {
+    fetchData(component) {
+      let { dataType, method, url } = component.__config__;
+      if (dataType === "dynamic" && method && url) {
+        this.$axios({
+          method,
+          url,
+        }).then((res) => {
+          this.setResData(component, res.data);
+        });
+      }
+    },
+    setResData(component, data) {
+      const { dataPath } = component.__config__;
+      component.options = data[dataPath];
+    },
+  },
 };
 </script>
 

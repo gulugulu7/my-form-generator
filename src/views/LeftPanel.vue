@@ -89,7 +89,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["SET_IDGLOBAL", "ADD_DRAWING"]),
+    ...mapMutations(["SET_IDGLOBAL", "ADD_DRAWING", "SET_ACTIVEDATA"]),
     onStart() {
       this.drag = true;
     },
@@ -100,7 +100,13 @@ export default {
       this.SET_IDGLOBAL();
       item.__vModel__ = `field${this.idGlobal}`;
       item.renderKey = Date.now();
-      this.ADD_DRAWING(deepClone(item));
+      const deepCloneObj = deepClone(item);
+      this.ADD_DRAWING(deepCloneObj);
+      this.SET_ACTIVEDATA(deepCloneObj);
+
+      if (item.__config__.dataType === "dynamic") {
+        this.$parent.fetchData(deepCloneObj);
+      }
     },
     cloneComponent(origin) {
       let data = deepClone(origin);

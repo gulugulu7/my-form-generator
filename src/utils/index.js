@@ -45,3 +45,8 @@ export function deepClone(obj) {
 
   return result;
 }
+
+// 判断是否为数字
+export function isNumberStr(str) {
+  return /^[+-]?(0|([1-9]\d*))(\.\d+)?$/g.test(str);
+}
